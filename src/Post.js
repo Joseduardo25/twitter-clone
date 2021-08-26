@@ -10,24 +10,24 @@ function Post({ displayName, username, verified, text, image, avatar }) {
   return (
     <div className='post'>
       <div className='post__avatar'>
-        <Avatar src='https://pbs.twimg.com/profile_images/1420572812193026050/W8boMMDn_normal.jpg' />
+        <Avatar src={avatar} />
       </div>
       <div className='post__body'>
         <div className='post__header'>
           <div className='post__headerText'>
             <h3>
-              Rafeh Qazi {''}
+              {displayName} {''}
               <span className='post__headerSpecial'>
-                <VerifiedUserIcon className='post__badge' /> @cleverqazi
+               {verified && <VerifiedUserIcon className='post__badge' />} {username}
               </span>
             </h3>
           </div>
           <div className='post__headerDescription'>
-            <p>i challenge you to build a Twitter Clone with React!!!</p>
+            <p>{text}</p>
           </div>
         </div>
         <img 
-          src='https://pbs.twimg.com/media/E9unyiVXoAEiQxU?format=jpg&name=small'
+          src={image}
           alt=''
         />
         <div className='post__footer'>
