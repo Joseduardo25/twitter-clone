@@ -21,6 +21,11 @@ function Widgets() {
           screenName='sanbenito'
           options={{ height: 400 }}
         />
+
+        <TwitterShareButton 
+          url={'https://facebook.com/cleverprogramer'}
+          options={{text: '#reactjs is awesome', via:'cleverqazi'}}
+        />
       </div>
 
     </div>
