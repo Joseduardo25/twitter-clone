@@ -3,12 +3,21 @@ import { ChatBubbleOutline, FavoriteBorder } from '@material-ui/icons'
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser'
 import RepeatIcon from '@material-ui/icons/Repeat'
 import PublishIcon from '@material-ui/icons/Publish'
-import React from 'react'
+import React, { forwardRef }from 'react'
 import './Post.css'
 
-function Post({ displayName, username, verified, text, image, avatar }) {
+
+const Post = forwardRef(({ 
+    displayName, 
+    username, 
+    verified, 
+    text, 
+    image, 
+    avatar 
+  }, ref) => {
+  
   return (
-    <div className='post'>
+    <div className='post' ref={ref}>
       <div className='post__avatar'>
         <Avatar src={avatar} />
       </div>
@@ -39,6 +48,6 @@ function Post({ displayName, username, verified, text, image, avatar }) {
       </div>
     </div>
   )
-}
+})
 
 export default Post
