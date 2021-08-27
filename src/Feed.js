@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Feed.css'
 import TweetBox from './TweetBox'
 import Post from './Post'
+import db from './firebase'
 
 function Feed() {
+
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    db.collection('posts').onSnapshot((snapshot) => 
+      setPosts(snapshot.docs.map((doc) => doc.data()))
+    )
+  }, [])
+
   return (
     <div className='feed'>
       <div className='feed__header'>
@@ -12,15 +22,17 @@ function Feed() {
 
       <TweetBox />
 
+      {posts.map((post) => (
+        <Post 
+          displayName={post.displayName} 
+          username={post.username}
+          verified={post.verified}
+          text={post.text}
+          avatar={post.avatar}
+          image={post.image}
+        />
+      ))}
       
-      <Post 
-        displayName= 'Sonny Sangha'
-        username='ssssangha'
-        verified={true}
-        text='YOOOOOO its working'
-        avatar='https://pbs.twimg.com/profile_images/1420572812193026050/W8boMMDn_normal.jpg'
-        image='https://pbs.twimg.com/media/E9unyiVXoAEiQxU?format=jpg&name=small'
-      />
       <Post />
       <Post />
       <Post />
